@@ -8,24 +8,26 @@ public class PlayerMovement	 : MonoBehaviour
 	public float moveSpeed = 300; //Speed | Rychlost
 	public float sidewaysSpeed = 50f; //Steering speed | Rychlost zataceni
 	public float horizontalInput;
-	public GameObject character;
 
 	private Rigidbody characterBody;
 	private float ScreenWidth;
 	private float ScreenHeight;
 
+    public GameObject character;
+	public Rigidbody rb;
+
 	// Use this for initialization
 	void Start()
 	{
+		characterBody = character.GetComponent<Rigidbody>();
 		ScreenWidth = Screen.width;
 		ScreenHeight = Screen.height;
-		characterBody = character.GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		Debug.Log(Input.GetAxis("Horizontal"));
+		//Debug.Log(Input.GetAxis("Horizontal"));
 		int i = 0;
 		//loop over every touch found
 		while (i < Input.touchCount)
@@ -54,9 +56,18 @@ public class PlayerMovement	 : MonoBehaviour
 	void FixedUpdate()
 	{
 		characterBody.AddForce(0, 0, moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
-		//#if UNITY_EDITOR
+	
 		RunCharacter(Input.GetAxis("Vertical"));
-//#endif
+
+		if (Input.GetKey("d"))
+		{
+			rb.AddForce(sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+		}
+
+		if (Input.GetKey("a"))
+		{
+			rb.AddForce(-sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+		}
 	}
 
 	private void RunCharacter(float horizontalInput)

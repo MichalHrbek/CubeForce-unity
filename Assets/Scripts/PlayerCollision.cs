@@ -5,18 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public PlayerMovement movement;
+    public Transform tr;
+    public int DeathHeight = 0;
+    public PlayerMovement TouchMovement;
+    public GameObject GameOverScreen;
+    public AudioSource death;
+    private void Update()
+    {
+        if (DeathHeight > tr.position.y) //When falls of map
+        {
+            TouchMovement.enabled = false;      //Disable movement
+            GameOverScreen.SetActive(true);     //Show death screen
+        }
+    }
     void OnCollisionEnter (Collision collisionInfo)
     {
-        if (collisionInfo.collider.tag == "Obstacle")
+        if (collisionInfo.collider.tag == "Obstacle") //When collides with obstacle
         {
-            movement.enabled = false;
+            //death.PlayOneShot(death.clip);
+            TouchMovement.enabled = false;      //Disable movement
+            GameOverScreen.SetActive(true);     //Show death screen
         }
-        
-                if (collisionInfo.collider.tag == "Finish")
-        {
-            SceneManager.LoadScene ("Level2");
-        }
-
     }
 }
