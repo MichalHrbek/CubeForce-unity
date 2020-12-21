@@ -7,3 +7,4 @@ Arcade game for phones with randomly generated levels, made in Unity. You can co
 * Powerups/Coins/Consumables
 * Sound
 * Particles
+* High-score
