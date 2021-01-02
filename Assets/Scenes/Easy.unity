@@ -1728,11 +1728,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2879512ae91634fb50ea6e98370058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 25
+  moveSpeed: 20
   sidewaysSpeed: 45
   horizontalInput: 0
   character: {fileID: 2005419245}
   rb: {fileID: 2005419250}
+  Player1: 1
+  Touch: 0
 --- !u!1 &2125782699
 GameObject:
   m_ObjectHideFlags: 0

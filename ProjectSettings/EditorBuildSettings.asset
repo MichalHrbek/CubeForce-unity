@@ -23,4 +23,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Easy.unity
     guid: d81349c6c5a08024491f5b582ee4cc15
+  - enabled: 1
+    path: Assets/Scenes/Multiplayer.unity
+    guid: ded157767e6dca44fa5b7da5fd77dcfc
+  - enabled: 1
+    path: Assets/Scenes/MediumM.unity
+    guid: 245f7c4df52e70b429f68f6cd658cf66
+  - enabled: 1
+    path: Assets/Scenes/Singleplayer.unity
+    guid: 8a5b74b35805e344e89ba0b986db5df5
+  - enabled: 1
+    path: Assets/Scenes/HardM.unity
+    guid: 7e554a35d41a35f40a1ee45da40c4e50
+  - enabled: 1
+    path: Assets/Scenes/EasyM.unity
+    guid: 66818c9e92dc413449e49be2a9866770
+  - enabled: 1
+    path: Assets/Scenes/Medium.unity
+    guid: 4d296e75bdd67164a9e5367aadab7188
   m_configObjects: {}
