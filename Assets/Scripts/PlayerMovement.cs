@@ -2,76 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement	 : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-	//variables
-	public float moveSpeed = 300; //Speed | Rychlost
-	public float sidewaysSpeed = 50f; //Steering speed | Rychlost zataceni
-	public float horizontalInput;
+	float moveSpeed, sidewaysSpeed;
 
-	private Rigidbody characterBody;
-	private float ScreenWidth;
-	private float ScreenHeight;
-
-    public GameObject character;
+	public GameObject character;
 	public Rigidbody rb;
 	public bool Player1 = true;
-	public bool Touch = false;
 
-	// Use this for initialization
 	void Start()
 	{
-		characterBody = character.GetComponent<Rigidbody>();
-		ScreenWidth = Screen.width;
-		ScreenHeight = Screen.height;
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-		//Debug.Log(Input.GetAxis("Horizontal"));
-		int i = 0;
-        //loop over every touch found
-        if (Touch)
-        {
-
-			while (i < Input.touchCount)
-			{
-				float v = ScreenWidth - (ScreenWidth / 6);
-				if (Input.GetTouch(i).position.x > v)
-				{
-					if (Input.GetTouch(i).position.y < ScreenHeight / 3.50)
-					{
-						//move right
-						RunCharacter(1.0f);
-					}
-
-				}
-				if (Input.GetTouch(i).position.x < ScreenWidth / 6)
-				{
-					if (Input.GetTouch(i).position.y < ScreenHeight / 3.50)
-					{
-						//move left
-						RunCharacter(-1.0f);
-					}
-				}
-				++i;
-			}
-
+		rb = character.GetComponent<Rigidbody>();
+		switch (Menu.difficulty)
+		{
+			case 1:
+				moveSpeed = 22;
+				sidewaysSpeed = 45;
+				break;
+			case 2:
+				moveSpeed = 26;
+				sidewaysSpeed = 45;
+				break;
+			case 3:
+				moveSpeed = 32;
+				sidewaysSpeed = 45;
+				break;
 		}
-		characterBody.AddForce(0, 0, moveSpeed * Time.deltaTime, ForceMode.VelocityChange);
 	}
 	void FixedUpdate()
 	{
-		
-
-		if(Touch)
-		{
-			RunCharacter(Input.GetAxis("Vertical"));
-		}
-		
-
-		if(Player1)
+		if (Player1)
 		{
 			if (Input.GetKey("d"))
 			{
@@ -95,14 +55,6 @@ public class PlayerMovement	 : MonoBehaviour
 				rb.AddForce(-sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 			}
 		}
-
+		rb.AddForce(0, 0, moveSpeed);
 	}
-
-	private void RunCharacter(float horizontalInput)
-	{
-		//move player
-		characterBody.AddForce(horizontalInput * sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-
-	}
-			
 }

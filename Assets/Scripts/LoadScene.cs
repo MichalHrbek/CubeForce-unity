@@ -4,46 +4,39 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LoadScene : MonoBehaviour
 {
+	public Animator transition;
+	public void LoadSceneByName(string name)
+	{
+		SceneManager.LoadScene(name);
+	}
+	public void LoadGame()
+    {
+        if (Menu.multiplayer)
+        {
+            LoadSceneByName("GameM");
+        }
+        else
+        {
+            LoadSceneByName("Game");
+        }
+    }
+	public void LoadSceneWithAnimation(string name)
+    {
+        if (transition != null)
+        {
+			StartCoroutine(LoadSceneByNameWithAnimation(name));
+		}
+        else
+        {
+			LoadSceneByName(name);
+        }
+    }
+	public IEnumerator LoadSceneByNameWithAnimation(string name)
+    {
+		transition.SetTrigger("Start");
 
-	public void LoadHard()
-	{
-		SceneManager.LoadScene("Hard");
-	}
-	public void LoadMedium()
-	{
-		SceneManager.LoadScene("Medium");
-	}
-	public void LoadEasy()
-	{
-		SceneManager.LoadScene("Easy");
-	}
-	public void LoadHardM()
-	{
-		SceneManager.LoadScene("HardM");
-	}
-	public void LoadMediumM()
-	{
-		SceneManager.LoadScene("MediumM");
-	}
-	public void LoadEasyM()
-	{
-		SceneManager.LoadScene("EasyM");
-	}
-	public void LoadMenu()
-	{
-		SceneManager.LoadScene("Menu");
-	}
-	public void LoadOther()
-	{
-		SceneManager.LoadScene("Other");
-	}
-	public void LoadMulti()
-	{
-		SceneManager.LoadScene("Multiplayer");
-	}
-	public void LoadSing()
-	{
-		SceneManager.LoadScene("Singleplayer");
-	}
+		yield return new WaitForSeconds(1);
 
+		LoadSceneByName(name);
+    }
 }

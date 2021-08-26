@@ -22,7 +22,6 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collisionInfo.collider.tag == "Obstacle") //When collides with obstacle
         {
-            //death.PlayOneShot(death.clip);
             TouchMovement.enabled = false;      //Disable movement
             GameOverScreen.SetActive(true);     //Show death screen
         }
