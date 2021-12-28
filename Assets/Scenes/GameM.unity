@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -152,9 +152,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98745b8b1485a1d4fb7f3b82b353f08e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RedCube: {fileID: 9048873455172344388, guid: ac2cde3da5e2c834ca2cfa22bcf90dbf, type: 3}
-  Ramp: {fileID: 3696116575541739553, guid: 86261bff5b50a4749aff08a7ab6114e9, type: 3}
-  GreenCube: {fileID: 4113319323301025283, guid: 349a02335eab5ad4ba6c011f1b89568d, type: 3}
+  Player: {fileID: 2005419245}
+  Player2: {fileID: 1719071044}
+  renderDistance: 200
+  obstacles:
+  - gameObject: {fileID: 4113319323301025283, guid: 349a02335eab5ad4ba6c011f1b89568d, type: 3}
+    spawnFrequency:
+    - 12
+    - 12
+    - 10
+    rens: 0
+    protectionOffset: 5
+  - gameObject: {fileID: 9048873455172344388, guid: ac2cde3da5e2c834ca2cfa22bcf90dbf, type: 3}
+    spawnFrequency:
+    - 7
+    - 7
+    - 5
+    rens: 0
+    protectionOffset: 5
+  - gameObject: {fileID: 3696116575541739553, guid: 86261bff5b50a4749aff08a7ab6114e9, type: 3}
+    spawnFrequency:
+    - 200
+    - 200
+    - 200
+    rens: 0
+    protectionOffset: 5
 --- !u!4 &121450779
 Transform:
   m_ObjectHideFlags: 0
@@ -688,6 +710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -908,6 +931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1041,6 +1065,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1273,6 +1298,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &1371581380
 Canvas:
   m_ObjectHideFlags: 0
@@ -1374,6 +1400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1587,6 +1614,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Navigation:
     m_Mode: 3
+    m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -1708,6 +1736,7 @@ MonoBehaviour:
   character: {fileID: 1719071044}
   rb: {fileID: 1719071047}
   Player1: 0
+  touchDiv: 4
 --- !u!54 &1719071047
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2235,6 +2264,7 @@ MonoBehaviour:
   character: {fileID: 2005419245}
   rb: {fileID: 2005419250}
   Player1: 1
+  touchDiv: 4
 --- !u!1 &2125782699
 GameObject:
   m_ObjectHideFlags: 0
@@ -2311,6 +2341,7 @@ Light:
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &2125782701

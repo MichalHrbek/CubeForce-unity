@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public static int difficulty;
+    public static int difficulty = 1;
     public static bool multiplayer;
     public GameObject difficultyObj, multiplayerObj;
 

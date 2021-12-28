@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-	float moveSpeed, sidewaysSpeed;
+	private float moveSpeed, sidewaysSpeed, sideInput = 0;
 
 	public GameObject character;
 	public Rigidbody rb;
 	public bool Player1 = true;
+
+	public float touchDiv = 4;
 
 	void Start()
 	{
@@ -31,30 +33,51 @@ public class PlayerMovement : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
+		sideInput = 0;
+		//Keyboard
 		if (Player1)
 		{
 			if (Input.GetKey("d"))
 			{
-				rb.AddForce(sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+				sideInput = 1;
 			}
 
 			if (Input.GetKey("a"))
 			{
-				rb.AddForce(-sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+				sideInput = -1;
 			}
 		}
 		else
 		{
 			if (Input.GetKey(KeyCode.RightArrow))
 			{
-				rb.AddForce(sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+				sideInput = 1;
 			}
 
 			if (Input.GetKey(KeyCode.LeftArrow))
 			{
-				rb.AddForce(-sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+				sideInput = -1;
 			}
 		}
+		//Touch
+		if (Input.touchCount > 0)
+        {
+            for(int i = 0; i < Input.touchCount; i++) 
+			{
+				Touch touch = Input.GetTouch(i);
+				if(touch.position.x < Screen.width/touchDiv && touch.position.y < Screen.height/touchDiv)
+				{
+					sideInput = -1;
+				}
+				else if (touch.position.x > Screen.width - Screen.width/touchDiv && touch.position.y < Screen.height - Screen.height/touchDiv)
+				{
+					sideInput = 1;
+				}
+			}
+
+        }
+
+		rb.AddForce(sideInput * sidewaysSpeed * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 		rb.AddForce(0, 0, moveSpeed);
 	}
 }
