@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,8 +7,7 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject character;
 	public Rigidbody rb;
 	public bool Player1 = true;
-
-	public float touchDiv = 4;
+	public float touchDiv = 2.5f;
 
 	void Start()
 	{
@@ -69,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 				{
 					sideInput = -1;
 				}
-				else if (touch.position.x > Screen.width - Screen.width/touchDiv && touch.position.y < Screen.height - Screen.height/touchDiv)
+				else if (touch.position.x > Screen.width - Screen.width/touchDiv && touch.position.y < Screen.height/touchDiv)
 				{
 					sideInput = 1;
 				}
